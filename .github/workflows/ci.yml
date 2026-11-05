@@ -15,15 +15,22 @@ jobs:
       - run: uv run pytest -q
   frontend:
     runs-on: ubuntu-latest
-    if: hashFiles('frontend/package.json') != ''
-    defaults:
-      run:
-        working-directory: frontend
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # hashFiles() is only valid at step level; the job no-ops until frontend/ exists (T01).
+      - id: detect
+        run: |
+          if [ -f frontend/package.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; echo "No frontend yet, skipping."; fi
+      - if: steps.detect.outputs.present == 'true'
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm ci
-      - run: npm run lint --if-present
-      - run: npm run build
+      - if: steps.detect.outputs.present == 'true'
+        working-directory: frontend
+        run: npm ci
+      - if: steps.detect.outputs.present == 'true'
+        working-directory: frontend
+        run: npm run lint --if-present
+      - if: steps.detect.outputs.present == 'true'
+        working-directory: frontend
+        run: npm run build
