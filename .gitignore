@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.next/
+out/
+# Archivos grandes o regenerables
+data/raw/ntrs/
+data/interim/
+data/raw/**/*.mp4
+data/raw/**/*.zip
+*.pdf
+# Los CSV de PSI chicos SI se versionan (data/raw/psi/**/*.csv)

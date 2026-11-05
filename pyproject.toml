@@ -1,0 +1,27 @@
+[project]
+name = "flame-in-freefall"
+version = "0.1.0"
+description = "SI-powered fire safety insights from NASA microgravity combustion data (Space Apps 2026, Buenos Aires)"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+pipeline = ["duckdb>=1.0", "pandas>=2.2", "pyarrow>=16", "pypdf>=4.2"]
+api = ["fastapi>=0.111", "uvicorn>=0.30"]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,62 @@
+[
+  {
+    "source_id": "challenge-2026-flame-in-freefall",
+    "kind": "other",
+    "title": "Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data (NASA Space Apps 2026 challenge statement)",
+    "url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+    "doi": null,
+    "ntrs_id": null,
+    "license": null,
+    "file_path": null,
+    "sha256": null,
+    "size_bytes": null,
+    "encoding": null,
+    "retrieved_at": "2026-11-05T13:30:00Z",
+    "notes": "Read through the local-event mirror https://hackathlone.com/challenges/flame-in-freefall because the official site blocks automated access. Re-check against the official page on 2026-11-13."
+  },
+  {
+    "source_id": "wessel-2018-amhp",
+    "kind": "other",
+    "title": "Retrospective Evaluation of Clinical Symptoms Due to Mild Hypobaric Hypoxia Exposure in Microgravity (Wessel, Schaefer, Thompson, Norcross, Bekdash). Aerosp Med Hum Perform 89(9):792-797, 2018",
+    "url": "https://asma.kglmeridian.com/downloadpdf/view/journals/amhp/89/9/article-p792.pdf",
+    "doi": null,
+    "ntrs_id": null,
+    "license": null,
+    "file_path": null,
+    "sha256": null,
+    "size_bytes": null,
+    "encoding": null,
+    "retrieved_at": "2026-11-05T13:30:00Z",
+    "notes": "Source of the 8.2 psia / 34% O2 exploration atmosphere, the 2005 8.0 psia / 32% decision, the Shuttle staged 10.2 psia / 26.5% protocol, and the 31.4% O2 limit for no increased burning rate at 8.2 psia. Add the DOI."
+  },
+  {
+    "source_id": "nasa-fm2-page",
+    "kind": "nasa_page",
+    "title": "Flammability of Materials on the Moon (FM2)",
+    "url": "https://www.nasa.gov/flammability-of-materials-on-the-moon-fm2/",
+    "doi": null,
+    "ntrs_id": null,
+    "license": null,
+    "file_path": null,
+    "sha256": null,
+    "size_bytes": null,
+    "encoding": null,
+    "retrieved_at": "2026-11-05T13:30:00Z",
+    "notes": "First planned combustion experiment on another planetary body. Its objective is to link 1 g material screening to reduced-gravity behavior. The page does not give a flight date."
+  },
+  {
+    "source_id": "ntrs-20250010653",
+    "kind": "ntrs_paper",
+    "title": "Lunar Combustion Investigation (LUCI) - Ferkul, Johnston, Kralik, Liao. ASGSR 2025 presentation",
+    "url": "https://ntrs.nasa.gov/citations/20250010653",
+    "doi": null,
+    "ntrs_id": "20250010653",
+    "license": null,
+    "file_path": null,
+    "sha256": null,
+    "size_bytes": null,
+    "encoding": null,
+    "retrieved_at": "2026-11-05T13:30:00Z",
+    "notes": "Partial-gravity flame spread on a spinning New Shepard flight (Feb 4 2025, about 1 atm air). The deck reports slower spread in partial g than 1 g for PMMA and SIBAL, and warns about Coriolis effects. Cite page numbers from the PDF."
+  }
+]
