@@ -63,7 +63,9 @@
   gravity_regime: lunar
   source_id: challenge-2026-flame-in-freefall
   status: ok
-  note: "These are upper and lower bounds rather than a point: draw as a region (O2 >= 0.30, P <= 70.3 kPa)."
+  note: >
+    These are bounds rather than a point: draw as a region (O2 >= 0.30, P <= 70.3 kPa). Per the official text, that is
+    "more than a 40% increase in the oxygen concentration" over Earth's atmosphere, which makes materials much more flammable.
 
 - id: spacesuit
   name: "Spacesuit"
@@ -75,11 +77,13 @@
   status: ok
 
 - id: pressurized_rover
-  name: "Pressurized rover"
-  pressure_psia: null
-  pressure_kpa: null
-  o2_mole_fraction: null
+  name: "Pressurized rover (challenge guidance)"
+  pressure_psia: 10.2          # "10.2 psi or less"
+  pressure_kpa: 70.3
+  o2_mole_fraction: 0.30       # "30% or greater"
   gravity_regime: lunar
-  source_id: null
-  status: missing
-  note: "Named in objective O1. Look for NASA sources (e.g., an exploration atmosphere applied to the rover)."
+  source_id: challenge-2026-flame-in-freefall
+  status: ok
+  note: >
+    The official text says the Moon Base and pressurized rover(s) are expected to share the same intermediate atmosphere.
+    Draw it as the same region as moon_base_challenge. Replace it if NASA publishes a rover-specific value.

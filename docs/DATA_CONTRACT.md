@@ -40,7 +40,10 @@ Ficha por investigación (F1, consideraciones C2 y C5). `data/processed/investig
 | `fuel_dimensions` | str \| null | Ej. "droplet diameter 2–5 mm" (solo si la fuente lo dice) |
 | `condition_ranges` | object | `{o2_mole_fraction: [min, max], pressure_kpa: [...], flow_velocity_cm_s: [...]}`, calculado desde `Experiment` |
 | `sensors_measurements` | list[str] | |
-| `fire_safety_layer` | list[enum] | `prevention` \| `detection` \| `suppression` |
+| `fire_safety_layer` | list[enum] | `prevention` \| `detection` \| `suppression` (base: asignación del texto oficial) |
+| `varied_parameters` | list[{field, n_levels, min, max}] | Calculado desde `Experiment` (ADR-007) |
+| `constant_parameters` | list[{field, value}] | Calculado desde `Experiment`; `null` si la columna no existe |
+| `challenge_mentions` | bool | Nombrada en `docs/challenge/OFFICIAL_TEXT_*.md`; solo para el badge, no para el ranking |
 | `n_experiments` | int | |
 | `source_ids` | list[str] | |
 

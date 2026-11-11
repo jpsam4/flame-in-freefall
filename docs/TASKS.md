@@ -26,6 +26,8 @@ Cada tarea trae un **prompt listo** para pegar en el agente. Se ejecutan desde e
 | T20 | ERL: fórmula en `backend/erl.py` + tests + campo en `gap_grid` | API | Claude Code | T08 | todo |
 | T21 | F5 Acotamiento de gravedad parcial (µg / 1 g / LUCI) | UI | Antigravity | T19, T07 | todo |
 | T22 | F6 Export CSV/Parquet + `data_dictionary.md` | Datos | Codex | T08 | todo |
+| T23 | `varied_parameters` / `constant_parameters` por investigación | Datos | Codex | T19 | todo |
+| T24 | F7 Comparador (núcleo) | UI | Antigravity | T19, T23 | todo |
 | T17 | Deploy + **video ≤ 30 s** + **≤ 7 slides** | Todos | Humano | T09–T16 | todo |
 | T18 | Página de entrega en inglés + AI_LOG + References | Todos | Humano + Claude | T17 | todo |
 
@@ -128,6 +130,15 @@ Tests: celda sin evidencia → 1; solo ground → 2; µg cercano con un material
 Tarea T21 (F5 de docs/SPEC.md). Para un ambiente lunar o marciano, mostrá en tres columnas: evidencia en µg, el punto
 de gravedad parcial (LUCI, source_id ntrs-20250010653, con sus caveats) y evidencia en 1 g. Rótulo fijo "Bounds, not
 predictions". Prohibido interpolar o dibujar curvas entre puntos. Cada valor con su cita. UI en inglés.
+```
+
+### T23 — Variado vs. constante (Codex)
+```
+Tarea T23 (ADR-007). En pipeline/investigations.py, función pura summarize_variation(experiments) que, para cada campo de
+condición de Experiment (o2_mole_fraction, pressure_kpa, flow_velocity_cm_s, fuel, fuel_geometry, diluent,
+flow_configuration), devuelva si es constante (un solo valor no nulo) o variado (n_levels, min, max o lista de valores).
+Ignorá nulls, pero reportá cuántos hay. Tests con fixtures sintéticos (tests/fixtures/, synthetic: true) y con 3 filas reales
+de FLEX. Nada de LLM.
 ```
 
 ### T13–T16 — Resto de UI (Antigravity)
