@@ -3,7 +3,11 @@
 > Estado: borrador v2 pre-evento (5/11). Se congela el sábado 14/11 a las 12:00.
 > Por qué estas funcionalidades: `STRATEGY.md`. Ajustes del 13/11: `RESOURCE_DAY.md`.
 
-## Problema
+## Problema (en palabras del texto oficial)
+Los datos de PSI son *"hard to find, harder to compare, and harder yet to interpret"*. El producto se organiza en esos tres
+verbos: **Find** (F0, F1, F2) · **Compare** (F3, F7) · **Interpret** (F4, F5, F8, F9).
+
+## Contexto
 NASA corrió décadas de experimentos de fuego en microgravedad (torres de caída, vuelos parabólicos, ISS, naves libres como Cygnus
 en Saffire). Los resultados están dispersos en papers, páginas de experimentos y repositorios. Quien diseña un hábitat lunar,
 un rover presurizado o una nave a Marte no tiene una forma rápida de responder:
@@ -30,19 +34,29 @@ Cada funcionalidad indica qué objetivo (O) o consideración (C) del challenge c
 ### F1 — Explorador y fichas de investigación *(O1, C2, C4, C5)* · núcleo
 - Tabla y filtros sobre `Experiment`; agrupación por hardware (CIR, MDCA, MSG).
 - Ficha por `Investigation` con los atributos de C2: objetivos, forma y tamaño del combustible, condiciones, variables, sensores y mediciones.
-- **Aceptación**: con FLEX y BASS-II cargados, filtrar por rango de O₂, ver conteo y gráfico, y abrir ambas fichas con todos los campos (o "not reported").
+- Sección **"What varied / what was held constant"**: para cada columna de condición, si tomó un solo valor en todos los
+  ensayos (constante) o varios (variada, con rango y cantidad de niveles). Es un cálculo determinístico sobre la tabla, sin LLM.
+- Badge "Highlighted in challenge brief" para las investigaciones nombradas en el texto oficial (no afecta el ranking).
+- **Aceptación**: con FLEX y BASS-II cargados, filtrar por rango de O₂, ver conteo y gráfico, y abrir ambas fichas con todos los
+  campos (o "not reported") y la sección variada/constante.
 
 ### F2 — Ranking de relevancia por ambiente *(O1)* · núcleo
-- Entrada: el ambiente de F0. Salida: investigaciones, experimentos y hallazgos rankeados, con el desglose "why this order?".
+- Entrada: el ambiente de F0. Salida: **investigaciones rankeadas** (unidad principal, ADR-007) con el desglose "why this order?".
+  Al abrir una, sus ensayos y hallazgos rankeados.
 - Resumen en lenguaje claro generado por LLM **solo** a partir de lo rankeado, con citas inline verificadas.
 - **Aceptación**: cada oración del resumen tiene al menos una cita clicable; si no hay evidencia cercana, lo dice.
 
 ### F3 — Mapa O₂ × presión con ERL *(C6, diferencial)* · núcleo
-- Ensayos como puntos; ambientes de `environments.yaml` como zonas (la base lunar es una región: O₂ ≥ 0,30 y P ≤ 70,3 kPa); ERL por celda.
+- Ensayos como puntos; ambientes de `environments.yaml` como zonas (la base lunar y el rover son una región: O₂ ≥ 0,30 y
+  P ≤ 70,3 kPa); ERL por celda.
+- **Curva de ppO₂ constante = la del aire a nivel del mar** (O₂ × P ≈ 21,2 kPa), rotulada "same oxygen for the lungs". Se
+  calcula desde `environments.yaml`, no se hardcodea (ver `STRATEGY.md` §3.6).
 - **Aceptación**: el gráfico se genera desde `data/processed/` y `environments.yaml`, sin valores hardcodeados.
 
 ### F4 — Hallazgos por prevención, detección y supresión *(O3)* · núcleo
-- `Finding` verificados agrupados según el marco de NASA (incluye FLEX con CO₂ y He, SAME para humo, BASS para materiales).
+- `Finding` verificados agrupados según el marco de NASA.
+- Base oficial (texto del challenge): prevención → BASS, BASS-II, Saffire-I/II/III; detección → SAME, SAME-R;
+  supresión → FLEX (dilución con CO₂ y He). Otras investigaciones se asignan con evidencia citada.
 - **Aceptación**: al menos 3 hallazgos verificados por grupo, cada uno con cita.
 
 ### F5 — Acotamiento de gravedad parcial *(C7, diferencial)* · alta
@@ -55,7 +69,7 @@ Cada funcionalidad indica qué objetivo (O) o consideración (C) del challenge c
 - Descarga de `experiments.csv` y `.parquet`, más diccionario de datos y procedencia por fila (`source_id`, `source_row`, DOI).
 - **Aceptación**: el CSV descargado coincide con `data/processed/` y el diccionario documenta cada columna con su unidad.
 
-### F7 — Comparador de investigaciones *(C3)* · media
+### F7 — Comparador de investigaciones *(C3)* · núcleo (subió el 11/11: el texto oficial nombra "comparar" como parte del problema)
 - 2–3 investigaciones lado a lado: rangos de condiciones superpuestos, similitudes y diferencias.
 
 ### F8 — "Where to test next" *(diferencial)* · media
@@ -66,7 +80,8 @@ Cada funcionalidad indica qué objetivo (O) o consideración (C) del challenge c
 - **Aceptación**: ≥ 80% en `evals/questions.yaml` y 100% de rechazo en las trampas.
 
 ### F10 — Aplicaciones en la Tierra *(O4)* · baja
-- 3 tarjetas: niebla de agua, detección de humo, equipo de bomberos, cada una con fuente.
+- 3 tarjetas, según el texto oficial: extintores de niebla de agua fina desarrollados para la ISS, detección de humo, y
+  equipo de bomberos (ropa protectora y tanques de aire). Cada una con fuente.
 
 ## Fuera de alcance
 - Fuego de cohetes y propelentes (excluido por el challenge).
@@ -94,7 +109,9 @@ Puntaje = `w_c · cercanía_de_condiciones + w_e · calidad_de_evidencia + w_r �
 
 ## Preguntas abiertas
 - [x] ~~¿Valores de atmósfera de hábitat con fuente?~~ → `data/environments.yaml` (exploración 2005/2012, Shuttle, base lunar, traje).
-- [ ] Fuente para la cabina de la ISS y para el rover presurizado.
+- [x] ~~Fuente para el rover presurizado~~ → texto oficial: misma atmósfera que la base lunar.
+- [ ] Fuente para la cabina de la ISS.
+- [ ] Transcripción del video oficial (`docs/challenge/VIDEO_TRANSCRIPT.md`): ¿agrega algo al texto?
 - [ ] ¿Qué recursos lista NASA el 13/11? → `RESOURCE_DAY.md`.
 - [ ] ¿Proveedor de LLM y cuota? (ADR-003)
 - [ ] ¿Saffire o CFI-G tienen datos tabulares públicos?

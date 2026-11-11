@@ -3,6 +3,7 @@
 Los tests de esquema, físicos y de procedencia de datos se agregan en T02/T05.
 """
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -42,7 +43,11 @@ def test_sources_json_is_valid():
         assert not missing, f"{s.get('source_id')}: faltan {missing}"
         assert s["kind"] in SOURCE_KINDS
         if s.get("file_path"):
-            assert (ROOT / s["file_path"]).exists(), f"{s['source_id']}: no existe {s['file_path']}"
+            path = ROOT / s["file_path"]
+            assert path.exists(), f"{s['source_id']}: no existe {s['file_path']}"
+            if s.get("sha256"):
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                assert digest == s["sha256"], f"{s['source_id']}: el archivo cambió (sha256 no coincide)"
 
 
 def test_eval_questions_are_well_formed():

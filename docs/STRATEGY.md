@@ -7,7 +7,8 @@
 
 ## 1. Lo que pide el challenge (texto oficial resumido)
 
-Resumido de la ficha oficial, replicada por el evento local de Athlone. **La página de spaceappschallenge.org es la palabra final.**
+Desde el 11/11 tenemos el **texto oficial completo** en `docs/challenge/OFFICIAL_TEXT_2026-11-11.md`. Las tablas de abajo lo
+resumen; los cambios respecto del resumen anterior están en §1.1.
 
 **Pedido central**: un dashboard web impulsado por SI que **resuma, rankee e interprete** décadas de resultados de llamas en
 microgravedad de NASA, para apoyar la seguridad contra incendios en la exploración humana.
@@ -35,6 +36,22 @@ microgravedad de NASA, para apoyar la seguridad contra incendios en la exploraci
 **Lectura estratégica**: C6 y C7 son, casi palabra por palabra, nuestra idea I2 (mapa O₂ × presión con los hábitats encima, y huecos
 de gravedad parcial). El autor del challenge está pidiendo ese análisis. La mayoría de los equipos va a hacer un buscador con chat
 y no va a llegar ahí.
+
+### 1.1 Texto oficial del 11/11: qué cambia
+Los objetivos y las consideraciones **no cambiaron**: el resumen anterior era fiel. Lo nuevo son detalles con consecuencias:
+
+| # | Qué dice el texto oficial | Qué cambiamos |
+|---|---|---|
+| 1 | **El problema en tres verbos**: los datos de PSI son "difíciles de **encontrar**, más difíciles de **comparar** y todavía más difíciles de **interpretar**" | Organizamos el producto en esos tres verbos. **El comparador (F7) pasa a núcleo**: el problema lo nombra |
+| 2 | Se rankean **investigaciones** ("summarizes, ranks, and interprets combustion science investigations") | F2 rankea primero **investigaciones** y después, al abrir una, sus ensayos y hallazgos (ADR-007) |
+| 3 | El marco de NASA es **prevención · detección · supresión**, con investigaciones asignadas: prevención → BASS, BASS-II, Saffire-I/II/III (materiales y límites de inflamabilidad); detección → SAME, SAME-R; supresión → FLEX (dilución con CO₂ y He) | F4 arranca con esa asignación oficial como base, citada. Es la "respuesta de manual" que espera el jurado |
+| 4 | **Rover presurizado = misma atmósfera intermedia que la base lunar** | Preset del rover cargado en `environments.yaml` con fuente. Era un faltante |
+| 5 | C2 pregunta textualmente: *"how did tests from the same investigation differ and how were they the same?"* | Nueva funcionalidad en la ficha (F1): **"qué variaron y qué mantuvieron constante"**, calculado desde la tabla de ensayos. Es simple, determinístico y casi nadie lo va a hacer |
+| 6 | Otras investigaciones de PSI son relevantes "aunque no tan fuerte ni directamente" | Distinguimos relevancia **directa** (las nombradas en el texto) e **indirecta** (el resto de PSI), con un badge "highlighted in challenge brief" que no afecta el puntaje |
+| 7 | Contexto histórico: alarma de humo en **Artemis II**, explosión del tanque de O₂ de **Apollo 13**, incendio en **Mir** por falla de un generador de O₂, **Apollo 1** en una cabina llena de O₂ | **Gancho del pitch**: 3 de los 4 incidentes que cita NASA involucran oxígeno, y la base lunar va a operar con un 40% más de O₂ que la Tierra (§5) |
+| 8 | Nombre correcto: **Lunar-g** Combustion Investigation (LUCI) | Corregido en `sources.json` e inventario |
+| 9 | Aplicaciones en la Tierra concretas: extintores de **niebla de agua fina** desarrollados para la ISS, detección de humo, ropa protectora y **tanques de aire** de bomberos | F10 usa esos tres ejemplos |
+| 10 | Video oficial del challenge: https://youtu.be/AVuEiKxOpc0 | **Pendiente**: no se puede ver desde el entorno de los agentes. Pegar la transcripción en `docs/challenge/VIDEO_TRANSCRIPT.md` |
 
 ---
 
@@ -78,7 +95,7 @@ con Mistral 7B (no RAG). Es correcto, pero hay cientos iguales. **Eso es el piso
    tripulado del lander de SpaceX **[verificar estado]**.
    → Gancho narrativo: *"FM2 está por prender el primer fuego en la Luna. Construimos la herramienta para poner sus resultados
    en contexto con 40 años de evidencia."*
-2. **Ya hay un dato real de gravedad parcial: LUCI.** Voló en New Shepard el 4/2/2025, girando para simular gravedad lunar. En
+2. **Ya hay un dato real de gravedad parcial: LUCI (Lunar-g Combustion Investigation).** Voló en New Shepard el 4/2/2025, girando para simular gravedad lunar. En
    ese vuelo la propagación fue **más lenta** en gravedad parcial que en 1 g: PMMA 0,15 vs 0,40 cm/s en la punta de la llama.
    La extinción también fue distinta. La presentación **no** concluye que los materiales sean más inflamables en gravedad parcial,
    y advierte sobre el efecto Coriolis.
@@ -91,6 +108,22 @@ con Mistral 7B (no RAG). Es correcto, pero hay cientos iguales. **Eso es el piso
    atmósfera de tasa de quemado aumentada y exige ensayar materiales y excluir algunos (Wessel et al., 2018).
 5. **Hay pocos datos tabulares y muchos papers dispersos.** Eso es justo lo que el challenge pide resolver, y la IA ahí aporta de
    verdad: extraer condiciones de papers, unificar y comparar.
+
+6. **"Mismo oxígeno para los pulmones, más oxígeno para el fuego"** (cálculo propio con valores citados, 11/11).
+   La presión parcial de O₂ (ppO₂ = fracción × presión) es lo que respira la tripulación. La fracción de O₂ es lo que más pesa
+   en la inflamabilidad, según el propio texto oficial:
+
+   | Ambiente | O₂ | Presión | ppO₂ | O₂ vs. aire |
+   |---|---|---|---|---|
+   | Nivel del mar | 20,9% | 101,3 kPa | 21,2 kPa | 1,00× |
+   | Base lunar / rover (texto oficial) | ≥30% | ≤70,3 kPa | 21,1 kPa | 1,44× |
+   | Exploración 2012 (Wessel 2018) | 34% | 56,5 kPa | 19,2 kPa | 1,63× |
+   | Traje (texto oficial) | 100% | 29,6 kPa | 29,6 kPa | 4,78× |
+
+   La base lunar está sobre la **misma curva de ppO₂ que el aire terrestre**, pero con un 44% más de O₂ en la mezcla.
+   En el mapa O₂ × presión (F3) dibujamos esa curva: los hábitats se "deslizan" por la línea de respiración normal hacia la
+   zona donde los materiales arden más. Es física simple, verificable y se entiende con un solo gráfico.
+   ⚠️ No afirmamos cuánto más arden: eso lo dice la evidencia (o su ausencia) en cada celda.
 
 **Riesgos del tópico**: datos tabulares escasos (FLEX con 274 ensayos y BASS-II con 129), condiciones heterogéneas entre
 investigaciones, riesgo de sobreafirmar física y de que el LLM alucine. Nuestra regla de oro y el foco en "evidencia, no
@@ -125,8 +158,9 @@ cuánta evidencia hay. Es el "credit score" del challenge y se puede defender an
 |---|---|---|
 | O1 + C6 | **Selector de ambiente** con presets citados (ISS, atmósfera de exploración, base lunar, rover presurizado, traje) → investigaciones rankeadas por relevancia, con "¿por qué este orden?" | Elegir "Base lunar" y ver el ranking |
 | C2 + C5 | **Fichas de investigación** con los atributos exactos de C2, agrupadas por hardware (CIR, MDCA, MSG) | Abrir la ficha de BASS-II |
-| C3 | **Comparador** de 2–3 investigaciones: rangos de condiciones superpuestos, similitudes y diferencias | FLEX vs BASS-II |
-| C6 | **Mapa O₂ × presión**: ensayos de microgravedad como puntos, ambientes de hábitat como zonas, ERL por celda | La base lunar cae donde hay pocos puntos |
+| C3 | **Comparador** (núcleo desde el 11/11) de 2–3 investigaciones: rangos de condiciones superpuestos, similitudes y diferencias | FLEX vs BASS-II |
+| C2 | **"What varied / what was held constant"** en cada ficha, calculado desde la tabla de ensayos | BASS-II: qué cambió entre los 129 ensayos |
+| C6 | **Mapa O₂ × presión**: ensayos de microgravedad como puntos, ambientes de hábitat como zonas, **curva de ppO₂ constante (21 kPa)**, ERL por celda | La base lunar está sobre la curva del aire terrestre y en zona con pocos puntos |
 | C7 | **Acotamiento de gravedad parcial**: evidencia en µg y en 1 g lado a lado, LUCI como único punto intermedio, rotulado "acota, no predice" | "Entre estos dos extremos está la Luna, y este es el único dato real" |
 | O3 | Hallazgos organizados por **prevención / detección / supresión** (el marco de NASA), con citas verificadas | Supresión: FLEX con CO₂ y He |
 | O2 | **Dataset unificado listo para modelar**: CSV/Parquet + diccionario de datos + procedencia (DOI, fila de origen), descargable | Botón "Descargar dataset" |
@@ -161,8 +195,9 @@ un deploy que depende de un backend caído, y no explicar en una oración qué h
 ### El demo de 30 segundos (storyboard)
 | Seg. | Imagen | Texto en pantalla (inglés) |
 |---|---|---|
-| 0–4 | Llama esférica en microgravedad (imagen de NASA con crédito, no generada) | *In space, fire doesn't rise.* |
-| 4–9 | Selector → "Lunar base: 34% O₂, 8.2 psi" | *Pick where the crew will live.* |
+| 0–3 | Cuatro nombres en secuencia, texto sobre fondo negro | *Apollo 1. Apollo 13. Mir. Artemis II.* |
+| 3–5 | Llama esférica en microgravedad (imagen de NASA con crédito, no generada) | *Same oxygen for the lungs. 40% more for the fire.* |
+| 5–9 | Selector → "Lunar base: ≥30% O₂, ≤10.2 psi" | *Pick where the crew will live.* |
 | 9–15 | Mapa O₂ × presión; la zona lunar casi vacía | *See what 40 years of NASA experiments actually cover.* |
 | 15–20 | ERL 2/6 y el acotamiento µg / 1 g, con el punto de LUCI | *Know how sure we are, and what's missing.* |
 | 20–25 | Clic en una cita → fila del dataset o página del paper | *Every number traceable to NASA data.* |

@@ -20,8 +20,9 @@ Con 1–2 personas, una sola hace Vigía + Integrador y la otra Datos + Papers.
 
 ### T0 → T0+30 min · Capturar
 1. Copiar **toda** la lista de recursos a `prep/resources_2026-11-13.md` (nombre, URL, agencia, tipo, descripción). Tal cual, sin filtrar.
-2. Guardar una copia del texto del challenge y compararlo con el resumen de `STRATEGY.md` §1.
-   **¿Cambió algún objetivo o consideración?** Anotar las diferencias arriba de todo, en negrita.
+2. Copiar el texto de la página oficial y compararlo con `docs/challenge/OFFICIAL_TEXT_2026-11-11.md`
+   (`diff` o el prompt del final). Si cambió, guardarlo como `OFFICIAL_TEXT_2026-11-13.md` y anotar las diferencias arriba
+   de todo, en negrita. Si no cambió, anotar "sin cambios".
 3. Avisar al equipo: "Salieron los recursos: N datasets, M papers, cambios en el texto: sí/no".
 
 ### T0+30 → T0+2 h · Triage
@@ -87,7 +88,7 @@ Al final, decime qué rama (A–F) se aplica y por qué.
 
 ## Prompt para comparar el texto del challenge
 ```
-Compará el texto oficial pegado abajo con docs/STRATEGY.md sección 1. Listá solo las diferencias: objetivos
+Compará el texto oficial pegado abajo con docs/challenge/OFFICIAL_TEXT_2026-11-11.md. Listá solo las diferencias: objetivos
 nuevos, eliminados o reformulados, consideraciones nuevas y cambios de alcance. Para cada una, qué parte de
 docs/SPEC.md habría que ajustar.
 <pegar texto oficial>

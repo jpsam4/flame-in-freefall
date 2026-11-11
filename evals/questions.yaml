@@ -58,7 +58,24 @@
   expected_sources: ["challenge-2026-flame-in-freefall"]
   topic: other
 
+- id: q14
+  question: "Which PSI investigations studied fire detection in microgravity?"
+  expected_sources: ["SAME", "challenge-2026-flame-in-freefall"]
+  topic: smoke_toxicity
+- id: q15
+  question: "Is the expected Moon Base atmosphere more flammable than Earth's air even though astronauts breathe the same oxygen partial pressure?"
+  expected_sources: ["challenge-2026-flame-in-freefall"]
+  topic: material_flammability
+- id: q16
+  question: "In BASS-II, which test conditions were varied and which were held constant?"
+  expected_sources: ["psi-25-bass2-table"]
+  topic: material_flammability
+
 # --- Trampas: el sistema debe negarse o decir que no hay evidencia ---
+- id: t06
+  question: "What caused the smoke alarm during the Artemis II mission?"
+  trap: true
+  note: "The challenge text mentions the alarm, but nothing in the corpus explains its cause. It must not speculate."
 - id: t05
   question: "Interpolate the flame spread rate of PMMA at Martian gravity from the microgravity and 1 g data."
   trap: true

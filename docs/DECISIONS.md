@@ -32,6 +32,14 @@ Formato: contexto → decisión → consecuencias. Una decisión nueva = una ent
   modelen; (2) la métrica central es el Evidence Readiness Level (ERL), que mide cobertura de evidencia y no predice riesgo.
 - **Consecuencias**: complementa ADR-004 sin contradecirlo. La fórmula del ERL tiene que estar visible en la UI y testeada.
 
+## ADR-007 — La investigación es la unidad principal de ranking (texto oficial, 11/11)
+- **Contexto**: el texto oficial pide un dashboard que "summarizes, ranks, and interprets combustion science **investigations**"
+  y pregunta "how did tests from the same investigation differ and how were they the same?".
+- **Decisión**: F2 rankea investigaciones; los ensayos y hallazgos se rankean dentro de cada una. `Investigation` suma
+  `varied_parameters`, `constant_parameters` y `challenge_mentions` (ver `DATA_CONTRACT.md`).
+- **Consecuencias**: el ranking de investigaciones agrega los puntajes de sus ensayos y hallazgos (regla a definir en T10,
+  visible en la UI). `challenge_mentions` solo se usa como badge, para no sesgar el ranking hacia lo que el texto nombra.
+
 ## ADR-006 — UI y entrega en inglés, docs internos en español
 - **Contexto**: la guía de entrega exige que todo el contenido esté en inglés.
 - **Decisión**: textos de la UI, README de entrega y `data/environments.yaml` en inglés desde el primer commit del evento.

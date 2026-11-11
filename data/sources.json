@@ -7,12 +7,27 @@
     "doi": null,
     "ntrs_id": null,
     "license": null,
+    "file_path": "docs/challenge/OFFICIAL_TEXT_2026-11-11.md",
+    "sha256": "f97100ae986dd5bf0303fab8822e4225be5533d31a78293d63a9f2e2490eafab",
+    "size_bytes": 8092,
+    "encoding": "utf-8",
+    "retrieved_at": "2026-11-11T21:34:00Z",
+    "notes": "Verbatim official text shared by the team on 2026-11-11, before the resources were released. It supersedes the earlier paraphrase from https://hackathlone.com/challenges/flame-in-freefall (2026-11-05). Re-check the official page on 2026-11-13."
+  },
+  {
+    "source_id": "challenge-2026-video",
+    "kind": "other",
+    "title": "2026 Challenge | Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion (NASA Space Apps Challenge, YouTube)",
+    "url": "https://youtu.be/AVuEiKxOpc0",
+    "doi": null,
+    "ntrs_id": null,
+    "license": null,
     "file_path": null,
     "sha256": null,
     "size_bytes": null,
     "encoding": null,
-    "retrieved_at": "2026-11-05T13:30:00Z",
-    "notes": "Read through the local-event mirror https://hackathlone.com/challenges/flame-in-freefall because the official site blocks automated access. Re-check against the official page on 2026-11-13."
+    "retrieved_at": "2026-11-11T21:34:00Z",
+    "notes": "Official challenge video. Content NOT reviewed yet: YouTube is not reachable from the agent workspace. Add the transcript as docs/challenge/VIDEO_TRANSCRIPT.md, then summarize any differences from the text."
   },
   {
     "source_id": "wessel-2018-amhp",
@@ -47,7 +62,7 @@
   {
     "source_id": "ntrs-20250010653",
     "kind": "ntrs_paper",
-    "title": "Lunar Combustion Investigation (LUCI) - Ferkul, Johnston, Kralik, Liao. ASGSR 2025 presentation",
+    "title": "Lunar-g Combustion Investigation (LUCI) - Ferkul, Johnston, Kralik, Liao. ASGSR 2025 presentation",
     "url": "https://ntrs.nasa.gov/citations/20250010653",
     "doi": null,
     "ntrs_id": "20250010653",
@@ -57,6 +72,6 @@
     "size_bytes": null,
     "encoding": null,
     "retrieved_at": "2026-11-05T13:30:00Z",
-    "notes": "Partial-gravity flame spread on a spinning New Shepard flight (Feb 4 2025, about 1 atm air). The deck reports slower spread in partial g than 1 g for PMMA and SIBAL, and warns about Coriolis effects. Cite page numbers from the PDF."
+    "notes": "Partial-gravity flame spread on a spinning New Shepard flight (Feb 4 2025, about 1 atm air). The deck reports slower spread in partial g than 1 g for PMMA and SIBAL, and warns about Coriolis effects. Cite page numbers from the PDF. The name follows the official challenge text ('Lunar-g')."
   }
 ]

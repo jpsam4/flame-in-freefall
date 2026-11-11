@@ -196,6 +196,9 @@ Regla: ninguna idea se descarta sin escribir el motivo.
 | 5/11 | P3 (parcial) | FM2 busca justamente vincular los ensayos en 1 g con la gravedad reducida. Según NASA, el modelado sugiere que algunos materiales arderían con menos O₂ en gravedad lunar. LUCI (2025) midió propagación más lenta en gravedad parcial que en 1 g, sin concluir mayor inflamabilidad | Página de FM2; NTRS 20250010653 |
 | 5/11 | — | Análisis de ganadores 2023–2025: gana el insight no obvio y la métrica de decisión, no el buscador con chat | `STRATEGY.md` §2 |
 | 5/11 | — | **Demo de entrega: ≤ 30 s o ≤ 7 slides**; si se pasa, queda fuera del juzgamiento global | Guía de entrega |
+| 11/11 | — | **Texto oficial completo**: los objetivos no cambian. Lo nuevo: el problema en tres verbos (encontrar, comparar, interpretar), se rankean investigaciones, asignación oficial prevención/detección/supresión, el rover comparte la atmósfera de la base lunar, y la pregunta "¿qué variaron y qué mantuvieron?" | `docs/challenge/OFFICIAL_TEXT_2026-11-11.md`; `STRATEGY.md` §1.1 |
+| 11/11 | — | **"Mismo O₂ para los pulmones, más O₂ para el fuego"**: la base lunar (30% a 70,3 kPa) tiene la misma ppO₂ que el aire a nivel del mar (21,1 vs 21,2 kPa), con 1,44× la fracción de O₂. Es el insight visual del mapa F3 | Cálculo sobre `environments.yaml`; `STRATEGY.md` §3.6 |
+| 11/11 | — | Gancho del pitch: 3 de los 4 incidentes que cita el texto oficial (Apollo 1, Apollo 13, Mir) involucran oxígeno | Texto oficial |
 
 ## 11. Decisión
 *(Vacío hasta la sesión del domingo 8.)*

@@ -80,7 +80,7 @@ Queries sugeridas para `recon_ntrs.py`: "Saffire", "BASS-II", "FLEX droplet exti
 
 ## 3. Gravedad parcial y atmósferas de exploración (encontrado el 5/11)
 - **PSI no tiene datos de combustión en gravedad parcial** (lo dice el texto del challenge).
-- **LUCI — Lunar Combustion Investigation** (NTRS 20250010653, presentación ASGSR 2025, Ferkul et al.):
+- **LUCI — Lunar-g Combustion Investigation** (NTRS 20250010653, presentación ASGSR 2025, Ferkul et al.):
   - Voló en New Shepard el 4/2/2025, girando a 11 RPM con radio efectivo de 1,22 m para simular gravedad lunar.
   - Muestras de PMMA y SIBAL en aire a ≈1 atm.
   - La propagación fue más lenta en gravedad parcial que en 1 g. Hay valores por material en la presentación: citar la página.
@@ -94,6 +94,11 @@ Queries sugeridas para `recon_ntrs.py`: "Saffire", "BASS-II", "FLEX droplet exti
   que es el límite para no aumentar la tasa de quemado a esa presión.
 - **Grupos de hardware** (texto del challenge): ACME → CIR · FLEX, FLEX-2 y CFI → MDCA dentro del CIR ·
   BASS, BASS-II, SPICE y SLICE → MSG con ducto de flujo.
+
+- **Asignación oficial prevención / detección / supresión** (texto del challenge del 11/11):
+  prevención → BASS, BASS-II, Saffire-I/II/III · detección → SAME, SAME-R · supresión → FLEX (CO₂ y He).
+  DAFT y DAFT-2 usaron uno de los instrumentos de SAME para detectar polvo.
+  ACME BRE estudió inflamabilidad de materiales en atmósfera quieta, en función de las propiedades del material (con combustibles gaseosos).
 
 ## 4. Otras fuentes a evaluar
 - NASA BPS: "NASA Studies Fire in Microgravity" (2026) — imágenes CIR/SoFIE para storytelling (crédito NASA).
